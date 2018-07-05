@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<!--顶部搜索 begin-->
+<view class="search" id="search">
+    <view class="search-inner clearfix">
+      <view class="search-l fl" id="channel">
+        <icon></icon>
+        <text>分类</text>
+      </view>
+      <view class="search-r fr">
+        <input id="search_value" type="text" placeholder="搜索商品"></input>
+      </view>
+    </view>
+</view>
+<!--顶部搜索 end-->
+
+<!--商品展示区 begin-->
+<view class="listProduct" id = "">
+  <view>
+      
+  </view>
+</view>
+
