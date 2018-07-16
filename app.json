@@ -4,7 +4,9 @@
     "pages/logs/logs",
     "pages/my/my",
     "pages/cart/cart",
-    "pages/common/common"
+    "pages/common/common",
+    "pages/address/address",
+    "pages/orders/orders"
   ],
   "window": {
     "backgroundTextStyle": "light",

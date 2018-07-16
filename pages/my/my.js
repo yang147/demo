@@ -1,42 +1,73 @@
-var app = getApp()
+// page/component/new-pages/user/user.js
 Page({
   data: {
-    userInfo: {},
-    userListInfo: [{
-      icon: '../../images/iconfont-dingdan.png',
-      text: '我的订单',
-      isunread: true,
-      unreadNum: 2
-    }, {
-      icon: '../../images/iconfont-card.png',
-      text: '我的代金券',
-      isunread: false,
-      unreadNum: 2
-    }, {
-      icon: '../../images/iconfont-icontuan.png',
-      text: '我的拼团',
-      isunread: true,
-      unreadNum: 1
-    }, {
-      icon: '../../images/iconfont-shouhuodizhi.png',
-      text: '收货地址管理'
-    }, {
-      icon: '../../images/iconfont-kefu.png',
-      text: '联系客服'
-    }, {
-      icon: '../../images/iconfont-help.png',
-      text: '常见问题'
-    }]
+    thumb: '',
+    nickname: '',
+    orders: [],
+    hasAddress: false,
+    address: {}
   },
+  onLoad() {
+    var self = this;
+    /**
+     * 获取用户信息
+     */
+    wx.getUserInfo({
+      success: function (res) {
+        self.setData({
+          thumb: res.userInfo.avatarUrl,
+          nickname: res.userInfo.nickName
+        })
+      }
+    }),
 
-  onLoad: function() {
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
+      /**
+       * 发起请求获取订单列表信息
+       */
+      wx.request({
+        url: '',
+        success(res) {
+          self.setData({
+            orders: res.data
+          })
+        }
       })
+  },
+  onShow() {
+    var self = this;
+    /**
+     * 获取本地缓存 地址信息
+     */
+    wx.getStorage({
+      key: 'address',
+      success: function (res) {
+        self.setData({
+          hasAddress: true,
+          address: res.data
+        })
+      }
+    })
+  },
+  /**
+   * 发起支付请求
+   */
+  payOrders() {
+    wx.requestPayment({
+      timeStamp: 'String1',
+      nonceStr: 'String2',
+      package: 'String3',
+      signType: 'MD5',
+      paySign: 'String4',
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '支付提示',
+          content: '<text>',
+          showCancel: false
+        })
+      }
     })
   }
 })
