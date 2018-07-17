@@ -6,7 +6,9 @@
     "pages/cart/cart",
     "pages/common/common",
     "pages/address/address",
-    "pages/orders/orders"
+    "pages/orders/orders",
+    "pages/search/search",
+    "pages/category/category"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -24,6 +26,12 @@
         "iconPath": "imags/home_un.png",
         "selectedIconPath": "imags/home.png",
         "text": "商城"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "iconPath": "imags/22.png",
+        "selectedIconPath": "imags/21.png",
+        "text": "分类"
       },
       {
         "pagePath": "pages/cart/cart",
